@@ -3,4 +3,4 @@
 <code>https://www.pyimagesearch.com/2017/09/04/raspbian-stretch-install-opencv-3-python-on-your-raspberry-pi/</code>
 2. Follow this link to implement basic steps: 
 <code>https://www.hackster.io/mjrobot/real-time-face-recognition-an-end-to-end-project-a10826</code>
-3. Then use Paho to implement MQTT <strong>REMEMBER TO DISABLE WINDOWS FIREWALL to connect to local Broker</strong>
+3. Then use Paho to implement MQTT <strong>(REMEMBER TO DISABLE WINDOWS FIREWALL to connect to local Broker)</strong>
