@@ -3,6 +3,12 @@ from tkinter import messagebox
 import index
 import os
 import sys
+import paho.mqtt.client as paho
+
+mqttClient = paho.Client("RPi")
+
+host = "hung-laptop"
+port = 3000
 
 #setup general parameters for tkinter
 window = Tk()
@@ -22,6 +28,10 @@ def clicked():
 def restart_app():
     os.execl(sys.executable, sys.executable, * sys.argv)
 
+def close_door():
+    mqttClient.connect(host, port, 60)
+    mqttClient.publish("toEsp/control/device/3", "off")
+
 def submit_pass():
     import gui_admin
     print ("Password is: " + enter_txt.get())
@@ -33,6 +43,8 @@ def submit_pass():
     
 face_btn = Button(window,text='Start Face Recognition', command=face_recognize)
 face_btn.grid(column=30,row=30)
+close_btn = Button(window,text='Close door', command=close_door)
+close_btn.grid(column=30,row=40)
 owner_btn = Button(window,text='Ring the bell', command=clicked)
 owner_btn.grid(column=0,row=0)
 restart_btn = Button(window,text='RESTART!', command=restart_app)

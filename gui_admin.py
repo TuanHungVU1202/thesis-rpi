@@ -5,7 +5,7 @@ import sys
 
 #setup general parameters for tkinter
 window = Tk()
-window.title("Welcome to My Home")
+window.title("System Admin")
 window.geometry('200x80')
 
  
