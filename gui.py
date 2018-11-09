@@ -23,11 +23,11 @@ def restart_app():
     os.execl(sys.executable, sys.executable, * sys.argv)
 
 def submit_pass():
+    import gui_admin
     print ("Password is: " + enter_txt.get())
     #TODO: change password here
     if enter_txt.get() == "1":
-        print("OK!")
-    #TODO: add function for entering correct pass (to gui-2 app)
+        gui_admin.main()
     
 #TODO: stream camera to webserver
     

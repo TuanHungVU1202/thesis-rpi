@@ -42,12 +42,17 @@ def getImagesAndLabels(path):
 
     return faceSamples,ids
 
-print ("\n [INFO] Training faces. It will take a few seconds. Wait ...")
-faces,ids = getImagesAndLabels(path)
-recognizer.train(faces, np.array(ids))
+def main():
+    getImagesAndLabels(path)
+    print ("\n [INFO] Training faces. It will take a few seconds. Wait ...")
+    faces,ids = getImagesAndLabels(path)
+    recognizer.train(faces, np.array(ids))
 
-# Save the model into trainer/trainer.yml
-recognizer.write('trainer/trainer.yml') # recognizer.save() worked on Mac, but not on Pi
+    # Save the model into trainer/trainer.yml
+    recognizer.write('trainer/trainer.yml') # recognizer.save() worked on Mac, but not on Pi
 
-# Print the numer of faces trained and end program
-print("\n [INFO] {0} faces trained. Exiting Program".format(len(np.unique(ids))))
+    # Print the numer of faces trained and end program
+    print("\n [INFO] {0} faces trained. Exiting Program".format(len(np.unique(ids))))
+
+if __name__ == "__main__":
+    main()
