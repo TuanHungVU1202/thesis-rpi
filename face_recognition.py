@@ -18,7 +18,7 @@ cascadePath = "haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascadePath);
 
 font = cv2.FONT_HERSHEY_SIMPLEX
-
+global_id = ''
 #iniciate id counter
 id = 0
 
@@ -62,12 +62,11 @@ def main():
                 id = "unknown"
                 confidence = "  {0}%".format(round(100 - confidence))
 
-            #return value to index file to sned to master
-            return id
         
             cv2.putText(img, str(id), (x+5,y-5), font, 1, (255,255,255), 2)
             cv2.putText(img, str(confidence), (x+5,y+h-5), font, 1, (255,255,0), 1)  
-        
+            global_id = id
+            
         cv2.imshow('camera',img) 
 
         k = cv2.waitKey(10) & 0xff # Press 'ESC' for exiting video
@@ -78,7 +77,9 @@ def main():
     print("\n [INFO] Exiting Program and cleanup stuff")
     cam.release()
     cv2.destroyAllWindows()
-    
+    #return value to index file to sned to master
+    return global_id
+
 if __name__ == "__main__":
     main()
 

@@ -1,7 +1,7 @@
 import face_recognition
 import paho.mqtt.client as paho
 
-mqttClient = paho.Client()
+mqttClient = paho.Client("RPi")
 
 host = "hung-laptop"
 port = 3000
@@ -16,10 +16,10 @@ mqttClient.connect(host, port, 60)
 
 
 def main():
-    recognized = face_recognition.main()
-    print(recognized)
-    if recognized != "unknown":
+    recognized_id = face_recognition.main()
+    if recognized_id != "unknown":
        mqttClient.publish("toEsp/control/device/3", "on")
+       print(recognized_id)
        print("Done!")
 
 main()
