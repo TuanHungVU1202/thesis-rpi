@@ -3,7 +3,7 @@ import paho.mqtt.client as paho
 
 mqttClient = paho.Client()
 
-host = "192.168.0.103"
+host = "hung-laptop"
 port = 3000
 
 def on_connect(mosq, obj, rc):
