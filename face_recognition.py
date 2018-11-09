@@ -71,14 +71,14 @@ def main():
 
         k = cv2.waitKey(10) & 0xff # Press 'ESC' for exiting video
         if k == 27:
+            # Do a bit of cleanup
+            print("\n [INFO] Exiting Program and cleanup stuff")
+            cam.release()
+            cv2.destroyAllWindows()
+            
+            #return value to index file to send to master
+            return global_id
             break
-        
-    # Do a bit of cleanup
-    print("\n [INFO] Exiting Program and cleanup stuff")
-    cam.release()
-    cv2.destroyAllWindows()
-    #return value to index file to sned to master
-    return global_id
 
 if __name__ == "__main__":
     main()

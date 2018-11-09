@@ -19,8 +19,9 @@ def main():
     recognized_id = face_recognition.main()
     if recognized_id != "unknown":
        mqttClient.publish("toEsp/control/device/3", "on")
-       print(recognized_id)
-       print("Done!")
+       print("Person regconized: " + recognized_id)
 
-main()
+if __name__ == "__main__":
+    main()
+
 
