@@ -18,7 +18,10 @@ window.geometry('600x150')
 #setup textbox
 enter_txt = Entry(window, show="*", width=12)
 enter_txt.grid(column=79, row=80)
- 
+
+def on_connect(mosq, obj, rc):
+   print("on_connect() "+str(rc))
+   
 def face_recognize():
     index.main()
 
@@ -29,6 +32,8 @@ def restart_app():
     os.execl(sys.executable, sys.executable, * sys.argv)
 
 def close_door():
+    mqttClient.on_connect = on_connect
+    print("Connecting to " + host)
     mqttClient.connect(host, port, 60)
     mqttClient.publish("toEsp/control/device/3", "off")
 
